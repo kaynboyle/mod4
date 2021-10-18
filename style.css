@@ -1,0 +1,28 @@
+.hide {
+    display: none;
+}
+
+div.wrapper{
+    display:flex;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+div.content{
+    margin-left: 50px;
+}
+
+div.wrapper header{
+    display: flex;
+    flex: center
+}
+div.questioncontainer div ul.choices-container{} li{
+    color:whitesmoke;
+    list-style:none;
+    background-color:purple;
+    margin-right: 1px;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    border: 2px solid white;
+    padding: 20px;
+}

@@ -10,12 +10,10 @@
     <body>
         <div class="wrapper">
             <header>
+                <div id="time">75</div>
               <h1>Coding Quiz Challenge</h1>
             </header>
             <div class="content">
-                <div class="content-header">
-                    <h2>Coding Quiz Challenge</h2>
-                </div>
                 <div class="content-body">
                 <!-- <textarea>
                   readonly
@@ -23,11 +21,28 @@
                   placeholder="Your Secure Password"
                   aria-label="Generated Password"
                 </textarea> -->
+                    <div class="start-container">
+                        <h2>Click here to start the Quiz</h2>
+                        <button class="start btn btn-primary">
+                            Start Quiz
+                        </button>
+                    </div>
+                    <div class="question-container hide">
+                        <!-- Questions go here -->
+                    </div>
+                    <div class="end-container hide">
+                        <div>score: <span id="score">0</span></div>
+                        <input id="initials"/>
+                        <button class="submit">Submit</button>
+                    </div>
+                    <div class="score_board hide">
+                        <!-- <ul id="name_score_list">
+                            <li>Kaylin</li>
+                        </ul> -->
+                    </div>
                 </div>
                 <div class="content-footer">
-                    <button onclick="window.location.href='html/p1.html';" class="btn btn-primary">
-                        Start Quiz
-                    </button>
+                    
                 </div>
             </div>
         </div>
