@@ -1,6 +1,7 @@
 let time = 75;
 let timer;
 let score = 0;
+let qIndex = 0;
 
 const questions = [
     {
@@ -47,7 +48,7 @@ document.querySelector(".start").addEventListener("click", function() {
     makeQuestion();
 });
 
-let qIndex = 0;
+
 const makeQuestion = function() {
     const q = questions[qIndex];
     const template = `
@@ -58,7 +59,6 @@ const makeQuestion = function() {
                 <li class="answer-choice">${q.choices[1]}</li>
                 <li class="answer-choice">${q.choices[2]}</li>
                 <li class="answer-choice">${q.choices[3]}</li>
-                <li class="answer-choice">${q.choices[4]}</li>
             </ul>
         </div>
     `;
@@ -79,8 +79,9 @@ document.querySelector(".question-container").addEventListener("click", function
         qIndex++;
         if (qIndex === questions.length) {
             end()
+        } else {
+            makeQuestion();
         }
-        makeQuestion();
     }
 });
 
@@ -95,41 +96,76 @@ const end = function() {
      clearInterval(timer);
     }
 
-var score_names = [
-    {
-        names: 'Kaylin',
-        score: '3',
-    }
-]
+// var score_names = [
+//     {
+//         names: 'K',
+//         score: '3',
+//     },
+
+// ]
 // add the namee inputed to the empty list with the score attached- {name:score}
 // for i in len(score_names) display score_names[i]
 //store as an array of objects
 // add {name: #initials
         // score: score}
 // addEventListener.onclick
-// const nstitle = "top scores";
-let nsIndex = 0;
 
 
 // event listener, when the user clicks sumbit after entering their initials the following should happen
 document.querySelector(".submit").addEventListener("click", function(){
     // once submit has been clicked the div which is the class score_board should be revealed
-    document.querySelector(".score_board").classList.remove("hide");
-    // ns is now the first array in the list of arrays because nsIndex = 0
+    //get initials get score
+    // for i in array show every item for every element make a list element-  append name and score
+    //empty ul
+    document.querySelector(".score_board1").classList.remove("hide");
 
-    const ns = score_names[nsIndex];
-    // making a template to be put into score_board
-    const template2 =  `
-    <div>
-        <div>${nstitle}</div>
-        <ul class="score_board">
-            <li class="answer-choice">${ns.names[0]}</li>
+    // score_names['#initials'] = score;
+    
+    // get the initials value
+    const initials = document.querySelector("#initials").value;
+    // construct an oject entry
+    const dataEntry = {
+        initials: initials,
+        score: score
+    }
+    // get old data from
+    const oldData = JSON.parse(localStorage.getItem("userEntry")) || [];
+    //add entry into old data array
+    oldData.push(dataEntry);
+    //write the data into storage
+    localStorage.setItem("userEntry",JSON.stringify(oldData));
 
-        </ul>
-    </div>
-    `;
+    
+
+
+
+    let template = "";
+
+    oldData.forEach((datum) => {
+        template += `
+            <div>
+                <span>${datum.initials}: </span><span>${datum.score}</span>
+            </div>
+        `
+    });
+
     document.querySelector(".score_board").innerHTML = template;
 });
+
+document.querySelector(".back").addEventListener("click", function(){
+    let time = 75;
+    let score = 0;
+    let qIndex = 0;
+    makeQuestion();
+});
+// document.querySelector(".submit").addEventListener("click", function(){
+//     document.querySelector(".score_board").classList.remove("hide");
+//     let time = 75;
+//     let score = 0;
+//     let qIndex = 0;
+//     // makeQuestion();
+// });
+// reset function  // reset game button and go back button
 
             // <li class="answer-choice">${ns.names[1]}</li>
             // <li class="answer-choice">${ns.names[2]}</li>
