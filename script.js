@@ -178,7 +178,7 @@ document.querySelector(".back").addEventListener("click", function(){
 
 document.querySelector(".reset").addEventListener("click", function(){
     document.querySelector(".score_board1").classList.add("hide");
-    document.querySelector(".score_board").classList.add("hide");
+    // document.querySelector(".score_board").classList.add("hide");
     document.querySelector(".submit").classList.add("hide");
     document.querySelector("#score").classList.add("hide");
     document.querySelector(".end-container").classList.add("hide");
@@ -187,7 +187,10 @@ document.querySelector(".reset").addEventListener("click", function(){
     qIndex = 0;
     localStorage.clear()
     document.querySelector(".start-container").classList.remove("hide");
-    makeQuestion();
+    makeQuestion().then(end()).then(document.querySelector(".score_board1").classList.remove("hide"),document.querySelector(".score_board").classList.remove("hide"));
+
+    
+    document.querySelector(".score_board").classList.remove("hide");
     // document.querySelector(".score_board").classList.add("hide");
 });
 
