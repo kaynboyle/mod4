@@ -48,6 +48,11 @@ document.querySelector(".start").addEventListener("click", function() {
     makeQuestion();
 });
 
+document.querySelector(".highscores").addEventListener("click", function() {
+    document.querySelector(".score_board1").classList.remove("hide");
+    document.querySelector(".score_board").classList.remove("hide");
+
+});
 
 const makeQuestion = function() {
     const q = questions[qIndex];
