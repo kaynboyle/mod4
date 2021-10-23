@@ -90,6 +90,8 @@ const end = function() {
      document.querySelector(".question-container").classList.add("hide");
      //show end - continaer
      document.querySelector(".end-container").classList.remove("hide");
+     document.querySelector(".submit").classList.remove("hide");
+     document.querySelector("#score").classList.remove("hide");
         //show score
      document.querySelector("#score").textContent =score;
      //stop timer
@@ -153,11 +155,56 @@ document.querySelector(".submit").addEventListener("click", function(){
 });
 
 document.querySelector(".back").addEventListener("click", function(){
-    let time = 75;
-    let score = 0;
-    let qIndex = 0;
-    makeQuestion();
+    document.querySelector(".score_board1").classList.add("hide");
+    // document.querySelector(".score_board").classList.add("hide");
+    document.querySelector(".submit").classList.add("hide");
+    document.querySelector("#score").classList.add("hide");
+    document.querySelector(".end-container").classList.add("hide");
+    time = 75;
+    score = 0;
+    qIndex = 0;
+    document.querySelector(".start-container").classList.remove("hide");
+    makeQuestion().then(end()).then(document.querySelector(".score_board1").classList.remove("hide"),document.querySelector(".score_board").classList.remove("hide"));
+
+    
+    document.querySelector(".score_board").classList.remove("hide");
 });
+
+
+// document.querySelector(".back").addEventListener("click", function(){
+//     document.querySelector(".end-container").classList.remove("hide");
+// });
+
+
+document.querySelector(".reset").addEventListener("click", function(){
+    document.querySelector(".score_board1").classList.add("hide");
+    document.querySelector(".score_board").classList.add("hide");
+    document.querySelector(".submit").classList.add("hide");
+    document.querySelector("#score").classList.add("hide");
+    document.querySelector(".end-container").classList.add("hide");
+    time = 75;
+    score = 0;
+    qIndex = 0;
+    localStorage.clear()
+    document.querySelector(".start-container").classList.remove("hide");
+    makeQuestion();
+    // document.querySelector(".score_board").classList.add("hide");
+});
+
+
+
+
+
+// I NEED HELP WITH .... 
+//THIS PART
+// - i cant get the questions to work when i do "back"
+// they dont load so i cant' tell if reset works either
+
+
+
+
+
+
 // document.querySelector(".submit").addEventListener("click", function(){
 //     document.querySelector(".score_board").classList.remove("hide");
 //     let time = 75;
